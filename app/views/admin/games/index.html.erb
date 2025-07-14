@@ -1,0 +1,25 @@
+<% content_for :title, "Jogos" %>
+
+<p class="text-green-600 mb-4"><%= notice %></p>
+
+<h1 class="text-3xl font-bold mb-6">Jogos</h1>
+
+<div id="games" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <% @games.each do |game| %>
+    <div class="bg-white shadow-xl rounded-2xl p-6 transition hover:shadow-2xl border border-gray-100">
+      <div class="mb-4">
+        <%= render game %>
+      </div>
+      <div class="text-right">
+        <%= link_to "Detalhes", admin_game_path(game), class: "inline-block text-sm text-white bg-teal-600 hover:bg-teal-700 font-medium px-4 py-2 rounded-lg transition" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if current_user.present? %>
+    <div class="mt-8">
+      <%= link_to "Novo Jogo", new_admin_game_path, class: "inline-block text-white bg-green-600 hover:bg-green-700 font-semibold px-5 py-3 rounded-xl shadow-md transition" %>
+    </div>
+<% end %>
+
