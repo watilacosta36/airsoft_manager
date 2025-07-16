@@ -13,6 +13,14 @@
   <% end %>
 
   <div>
+    <%= form.label "Imagem de capa", class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.file_field :cover_image, class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg
+      cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#4B1D65] focus:border-[#4B1D65] file:mr-4
+      file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#4B1D65] file:text-white
+      hover:file:bg-[#653780]" %>
+  </div>
+
+  <div>
     <%= form.label :data, class: "block text-sm font-medium text-gray-700 mb-1" %>
     <%= form.datetime_field :data, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
@@ -23,12 +31,12 @@
   </div>
 
   <div>
-    <%= form.label :title, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.label "Titulo", class: "block text-sm font-medium text-gray-700 mb-1" %>
     <%= form.text_field :title, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
 
   <div>
-    <%= form.label :description, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.label "Descrição", class: "block text-sm font-medium text-gray-700 mb-1" %>
     <%= form.text_area :description, rows: 4, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
 

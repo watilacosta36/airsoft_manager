@@ -15,6 +15,14 @@
                     class: "inline-block text-sm text-white bg-[#6C8E23] hover:bg-[#91B348] font-medium px-4 py-2
                     rounded-lg transition" %>
 
+        <%= link_to "Publicar", publish_admin_game_path(game),
+                    data: {
+                      turbo_method: :post,
+                      turbo_confirm: "Deseja realmente publicar este game?"
+                    },
+                    class: "inline-block text-sm text-white bg-[#2563EB] hover:bg-[#3B82F6] font-medium px-4 py-2
+                    rounded-lg transition" %>
+
         <%= link_to "Excluir", admin_game_path(game),
                     data: {
                       turbo_method: :delete,

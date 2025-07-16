@@ -1,6 +1,6 @@
 module Admin
   class GamesController < BaseController
-    before_action :set_game, only: %i[ edit update destroy ]
+    before_action :set_game, only: %i[ edit update destroy publish]
 
     def index
       @games = Game.includes(:user).all
@@ -37,6 +37,12 @@ module Admin
       redirect_to admin_root_path, status: :see_other, notice: "Game excluíío definitivamente!"
     end
 
+    def publish
+      @game.published!
+
+      redirect_to admin_root_path, notice: "Game publicado com sucesso!"
+    end
+
     private
 
     def set_game
@@ -44,7 +50,7 @@ module Admin
     end
 
     def game_params
-      params.expect(game: [ :data, :local, :title, :description, :user_id ])
+      params.expect(game: [ :data, :local, :title, :description, :user_id, :cover_image ])
     end
   end
 end

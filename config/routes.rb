@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   root "home#index"
 
   namespace :admin do
-    resources :games
+    resources :games do
+      member do
+        post :publish
+      end
+    end
 
     root "games#index"
   end
