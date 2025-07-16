@@ -1,12 +1,12 @@
-<% content_for :title, "Editing game" %>
+<% content_for :title, "Editar Jogo" %>
 
-<h1>Editing game</h1>
+<h1 class="text-3xl font-bold mb-6">Editar Jogo</h1>
 
-<%= render "form", game: @game %>
-
-<br>
-
-<div>
-  <%= link_to "Show this game", @game %> |
-  <%= link_to "Back to games", games_path %>
+<div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+  <%= render "form", game: @game %>
 </div>
+
+<div class="mt-6 space-x-4">
+  <%= link_to "Voltar para Jogos", admin_games_path, class: "text-sm text-gray-600 hover:underline" %>
+</div>
+

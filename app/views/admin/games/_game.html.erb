@@ -1,27 +1,32 @@
-<div id="<%= dom_id game %>">
+<div id="<%= dom_id game %>" class="space-y-2 text-sm text-gray-800">
   <p>
-    <strong>Data:</strong>
-    <%= game.data %>
+    <strong class="text-gray-600">Data:</strong>
+    <%= game.data.strftime("%d/%m/%Y") %>
   </p>
 
   <p>
-    <strong>Local:</strong>
+    <strong class="text-gray-600">Status:</strong>
+    <%= game.status %>
+  </p>
+
+  <p>
+    <strong class="text-gray-600">Local:</strong>
     <%= game.local %>
   </p>
 
   <p>
-    <strong>Title:</strong>
+    <strong class="text-gray-600">Título:</strong>
     <%= game.title %>
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <strong class="text-gray-600">Descrição:</strong>
     <%= game.description %>
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= game.user_id %>
+    <strong class="text-gray-600">Usuário:</strong>
+    <%= game&.user&.first_name || "-"  %>
   </p>
-
 </div>
+

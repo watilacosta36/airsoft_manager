@@ -1,42 +1,38 @@
-<%= form_with(model: game) do |form| %>
+<%= form_with(model: [:admin, game], class: "space-y-6") do |form| %>
   <% if game.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
-
-      <ul>
-        <% game.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <h2 class="font-semibold mb-2">
+        <%= pluralize(game.errors.count, "erro") %> impediram o jogo de ser salvo:
+      </h2>
+      <ul class="list-disc list-inside">
+        <% game.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div>
-    <%= form.label :data, style: "display: block" %>
-    <%= form.datetime_field :data %>
+    <%= form.label :data, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.datetime_field :data, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
 
   <div>
-    <%= form.label :local, style: "display: block" %>
-    <%= form.text_field :local %>
+    <%= form.label :local, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.text_field :local, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.text_field :title, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
+    <%= form.label :description, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.text_area :description, rows: 4, class: "w-full border border-gray-300 rounded-lg p-2 shadow-sm focus:ring focus:ring-indigo-200" %>
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Salvar Jogo", class: "bg-[#4B1D65] hover:bg-[#653780] text-white font-semibold px-6 py-3 rounded-xl shadow-md transition" %>
   </div>
 <% end %>

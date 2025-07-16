@@ -1,12 +1,9 @@
 module Admin
   class GamesController < BaseController
-    before_action :set_game, only: %i[ show edit update destroy ]
+    before_action :set_game, only: %i[ edit update destroy ]
 
     def index
-      @games = Game.all
-    end
-
-    def show
+      @games = Game.includes(:user).all
     end
 
     def new
@@ -17,38 +14,27 @@ module Admin
     end
 
     def create
-      @game = Game.new(game_params)
+      @game = Game.new(game_params.merge(user_id: current_user.id))
 
-      respond_to do |format|
-        if @game.save
-          format.html { redirect_to @game, notice: "Game was successfully created." }
-          format.json { render :show, status: :created, location: @game }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @game.errors, status: :unprocessable_entity }
-        end
+      if @game.save
+        redirect_to admin_root_path, notice: "Game salvo com sucesso!"
+      else
+        render :new, status: :unprocessable_entity
       end
     end
 
     def update
-      respond_to do |format|
-        if @game.update(game_params)
-          format.html { redirect_to @game, notice: "Game was successfully updated." }
-          format.json { render :show, status: :ok, location: @game }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @game.errors, status: :unprocessable_entity }
-        end
+      if @game.update(game_params)
+        redirect_to admin_root_path, notice: "Game atualizado com sucesso!"
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       @game.destroy!
 
-      respond_to do |format|
-        format.html { redirect_to games_path, status: :see_other, notice: "Game was successfully destroyed." }
-        format.json { head :no_content }
-      end
+      redirect_to admin_root_path, status: :see_other, notice: "Game excluíío definitivamente!"
     end
 
     private

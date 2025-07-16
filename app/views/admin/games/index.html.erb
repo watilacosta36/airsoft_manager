@@ -11,7 +11,17 @@
         <%= render game %>
       </div>
       <div class="text-right">
-        <%= link_to "Detalhes", admin_game_path(game), class: "inline-block text-sm text-white bg-teal-600 hover:bg-teal-700 font-medium px-4 py-2 rounded-lg transition" %>
+        <%= link_to "Edição", edit_admin_game_path(game),
+                    class: "inline-block text-sm text-white bg-[#6C8E23] hover:bg-[#91B348] font-medium px-4 py-2
+                    rounded-lg transition" %>
+
+        <%= link_to "Excluir", admin_game_path(game),
+                    data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Tem cereza disso?"
+                    },
+                    class: "inline-block text-sm text-white bg-[#962528] hover:bg-[#BD4C4F] font-medium px-4 py-2
+                    rounded-lg transition" %>
       </div>
     </div>
   <% end %>
@@ -19,7 +29,9 @@
 
 <% if current_user.present? %>
     <div class="mt-8">
-      <%= link_to "Novo Jogo", new_admin_game_path, class: "inline-block text-white bg-green-600 hover:bg-green-700 font-semibold px-5 py-3 rounded-xl shadow-md transition" %>
+      <%= link_to "Novo Jogo", new_admin_game_path,
+                  class: "inline-block text-white bg-[#4B1D65] hover:bg-[#653780] font-semibold px-5 py-3 rounded-xl
+                  shadow-md transition" %>
     </div>
 <% end %>
 
